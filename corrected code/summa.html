@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="summa.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIGNUP -->
+    <div id="signup">
+        <form onsubmit="return validateSignup()">
+            <h1>Sign Up</h1>
+
+            <div class="inputbox">
+                <label>Name</label>
+                <input id="signup-name" type="text">
+                <small class="error"></small>
+            </div>
+
+            <div class="inputbox">
+                <label>Email</label>
+                <input id="signup-email" type="email">
+                <small class="error"></small>
+            </div>
+
+            <div class="inputbox">
+                <label>Phone</label>
+                <input id="signup-phone" type="tel">
+                <small class="error"></small>
+            </div>
+
+            <div class="inputbox password-box">
+                <label>Password</label>
+                <input id="signup-pass" type="password">
+                <span class="toggle" onclick="togglePassword('signup-pass', this)">Show</span>
+                <small class="error"></small>
+            </div>
+
+            <button class="btn">Sign Up</button>
+
+            <p>Already have an account?
+                <a href="#" onclick="showLogin()">Login</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="login">
+        <form onsubmit="return validateLogin()">
+            <h1>Login</h1>
+
+            <div class="inputbox">
+                <label>Email</label>
+                <input id="login-email" type="email">
+                <small class="error"></small>
+            </div>
+
+            <div class="inputbox password-box">
+                <label>Password</label>
+                <input id="login-pass" type="password">
+                <span class="toggle" onclick="togglePassword('login-pass', this)">Show</span>
+                <small class="error"></small>
+            </div>
+
+            <button class="btn">Login</button>
+
+            <p>Don't have an account?
+                <a href="#" onclick="showSignup()">Sign Up</a>
+            </p>
+        </form>
+    </div>
+
+</div>
+
+<script src="summa.js"></script>
+</body>
+</html>

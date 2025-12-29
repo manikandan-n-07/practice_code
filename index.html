@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="signup">
+            <form onsubmit="return validateSignup()">
+                <h1>Sign Up</h1>
+                <div class="inputbox  password-box">
+                    <label for="text">Name</label>
+                    <input id="signup-name" type="text" placeholder="Name">
+                    <small class="error"></small>
+                </div>
+                <div class="inputbox">
+                    <label for="text">Email ID</label>
+                    <input id="signup-email" type="email" placeholder="Email ID">
+                    <small class="error"></small>
+                </div>
+                <div class="inputbox">
+                    <label for="text">Phone Number</label>
+                    <input id="signup-phone" type="tel" placeholder="Phone Number">
+                    <small class="error"></small>
+                </div>
+                <div class="inputbox">
+                    <label for="text">Password</label>
+                    <input id="signup-pass" type="password" placeholder="Enter an password">
+                    <span class="toggle" onclick="togglePassword('signup-pass', this)">Show Password</span>
+                    <small class="error"></small>
+                </div>
+                <button class="btn" type="submit">Button</button>
+                <div>
+                <p>Already have an account ? <a href="#" onclick="showLogin()">Login</a></p>
+                </div>
+            </form>
+        </div>
+    
+        <div id="login">
+             <form onsubmit="return validateLogin()">
+                <h1>Login</h1>
+                <div class="inputbox  password-box">
+                    <label for="text">Email ID</label>
+                    <input id="login-email" type="email" placeholder="Email ID">
+                    <small class="error"></small>
+                </div>
+               <div class="inputbox">
+                    <label for="text">Password</label>
+                    <input id="login-pass" type="password" placeholder="Enter an password" >
+                    <span class="toggle" onclick="togglePassword('login-pass', this)">Show Password</span>                    <small class="error"></small>
+                </div>
+                <button class="btn" type="submit">Button</button>
+                <div>
+                <p>Don't have an account ? <a href="#" onclick="showSignup()">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

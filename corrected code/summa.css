@@ -1,0 +1,65 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #23242a;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background: #B7E7A1;
+    padding: 30px;
+    width: 400px;
+    border-radius: 20px;
+}
+
+.inputbox {
+    margin: 20px 0;
+    position: relative;
+}
+
+.inputbox input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid #333;
+    font-size: 16px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: aqua;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+}
+
+input.invalid {
+    border-color: red;
+}
+
+input.valid {
+    border-color: green;
+}
+
+.password-box .toggle {
+    position: absolute;
+    right: 5px;
+    top: 35px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#signup {
+    display: none;
+}

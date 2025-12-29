@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    background: #23242a;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 100vh;
+}
+.container{
+    position: relative;
+    padding: 40px;
+    border-radius: 25px;
+    background-color: #B7E7A1;
+    width: 400px;
+}
+.inputbox {
+    position: relative;
+    margin: 30px 0;
+}
+.inputbox input {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #B7E7A1;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #333;
+}
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    background-color:aqua;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+#signup {
+    display: none;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+input.invalid {
+    border-color: red;
+}
+
+input.valid {
+    border-color: green;
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box .toggle {
+    position: absolute;
+    right: 10px;
+    top: 38px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+}
