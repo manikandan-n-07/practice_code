@@ -11,6 +11,20 @@ function showSignup() {
     signupDiv.style.display = "flex";
 }
 
+function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+
+    if(input.type === "password"){
+        input.type = "text";
+        icon.innerText = "Hide Password";
+    }
+
+    else{
+        input.type = "password";
+        icon.innerText = "Show Password";
+    }
+}
+
 // function setError(input, message) {
 //     const error = input.parentElement.querySelector(".error");
 //     error.innerText = message;
@@ -172,16 +186,49 @@ signupInputs.forEach(input => {
 });
 
 function validateSignup() {
+     const msg = document.getElementById("signup-message");
+
+    msg.innerText = "";
+    msg.className = "form-message";
+
     let isValid = true;
     signupInputs.forEach(input => {
         if(!validateSignupForm(input)) 
             isValid = false;
     });
-        if(isValid) {
-            alert("Sign up successfull");
-        }
-        return isValid;
+        if(!isValid) {
+            return false;
     };
+
+     fetch ("https://script.google.com/macros/s/AKfycby2h3TMTq1XYOgewxuFja3DVOYuEikCg7sL5Ak69wgZSLyBMp3zkWzo6x7lUqiXXZQ6/exec", {
+            method : "POST",
+            body : JSON.stringify({
+                action : "signup",
+                name : document.getElementById("signup-name").value,
+                email : document.getElementById("signup-email").value,
+                phone : document.getElementById("signup-phone").value,
+                password : document.getElementById("signup-pass").value
+
+            })
+        })
+
+        .then(res => res.json())
+        .then(data => {
+            msg.innerText = data.message;
+            msg.classList.add(data.status === "success" ? "success" : "error");
+
+            if(data.status === "success"){
+                setTimeout(showLogin, 1500)
+            }
+        })
+
+        .catch(() => {
+            msg.innerText = "Server error";
+            msg.classList.add('error')
+        });
+        return false;
+
+}
 
 function validateLoginform(input) {
     const value = input.value.trim();
@@ -203,14 +250,11 @@ function validateLoginform(input) {
                 setError(input, "Password should be 7 characters");
                 return false;
             }
-            else{
-                clearError(input);
-                return true;
-            }
-
+            break;
         }
-
-};
+            clearError(input);
+            return true;
+        };
 
 const loginInputs = document.querySelectorAll("#login input");
 
@@ -221,30 +265,43 @@ const loginInputs = document.querySelectorAll("#login input");
 });
 
 function validateLogin() {
-    let isValid = false;
+
+    const msg = document.getElementById("login-message");
+
+    msg.innerText = "";
+    msg.className = "form-message";
+
+    let isValid = true;
     loginInputs.forEach(input => {
         if(!validateLoginform(input)){
             isValid = false;
+}});
+
+        if(!isValid){
+            return false;
         }
 
-        if(isValid){
-            alert("Login successful");
-        }
-        return isValid;
-    }
-    )
-}
+        fetch("https://script.google.com/macros/s/AKfycby2h3TMTq1XYOgewxuFja3DVOYuEikCg7sL5Ak69wgZSLyBMp3zkWzo6x7lUqiXXZQ6/exec", {
+            method : "POST",
+            body : JSON.stringify({
+                action :"login",
+                email : document.getElementById("login-email").value,
+                password : document.getElementById("login-pass").value
+            })
+        })
+           .then(res => res.json())
+           .then(data => {
+            msg.innerText = data.message
+            msg.classList.add(data.status === "success" ? "success" : "error")
+           })
 
-function togglePassword(inputId, icon) {
-    const input = document.getElementById(inputId);
-
-    if(input.type === "password"){
-        input.type = "text";
-        icon.innerText = "Hide Password";
+           .catch(() => {
+            msg.innerText = "Server error";
+            msg.classList.add("error");
+           })
+      return false;
+       
     }
 
-    else{
-        input.type = "password";
-        icon.innerText = "Show Password";
-    }
-}
+
+
